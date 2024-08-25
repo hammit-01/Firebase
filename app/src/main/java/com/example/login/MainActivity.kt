@@ -11,6 +11,8 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 
+// 헤헤
+
 class MainActivity : AppCompatActivity() {
     // FirebaseAuth 인스턴스 초기화
     private var auth = FirebaseAuth.getInstance()
