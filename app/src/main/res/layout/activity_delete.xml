@@ -38,36 +38,45 @@
             android:id="@+id/logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:background="@drawable/border"
             android:textColor="@color/black"
             android:text="Log Out" />
 
-        <Button
-            android:id="@+id/gotoRead"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/border"
-            android:textColor="@color/black"
-            android:text="Go To Read Page" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/gotoWrite"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/border"
-            android:textColor="@color/black"
-            android:text="Go To Write Page" />
+            <Button
+                android:id="@+id/gotoRead"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/border"
+                android:text="Go To Read Page"
+                android:textColor="@color/black" />
 
-        <Button
-            android:id="@+id/gotoMain"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/border"
-            android:textColor="@color/black"
-            android:text="Go To Main" />
+            <Button
+                android:id="@+id/gotoWrite"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/border"
+                android:text="Go To Write Page"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/gotoMain"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/border"
+                android:text="Go To Main Page"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

@@ -89,7 +89,6 @@ class DeleteActivity : AppCompatActivity() {
                             val title = document.getString("title") ?: "No Title"
                             val content = document.getString("content") ?: "No Content"
                             posts.add(Post(id, title, content))
-                            Toast.makeText(this, "Selected Posts: $id", Toast.LENGTH_LONG).show()
                         }
                         postAdapter.notifyDataSetChanged()
                     } else {

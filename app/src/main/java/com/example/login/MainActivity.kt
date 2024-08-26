@@ -5,13 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
-
-// 헤헤
 
 class MainActivity : AppCompatActivity() {
     // FirebaseAuth 인스턴스 초기화
@@ -31,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         val gotoRead = findViewById<Button>(R.id.gotoRead)
         val logout = findViewById<Button>(R.id.logout)
         val gotoDelete = findViewById<Button>(R.id.gotoDelete)
+        // Todo checkbox 설정
+        val checkbox = findViewById<CheckBox>(R.id.checkBox)
 
         // 현재 사용자 가져오기
         val currentUser = auth.currentUser
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
             gotoRead.visibility = View.VISIBLE
             logout.visibility = View.VISIBLE
             gotoDelete.visibility = View.VISIBLE
+            checkbox.visibility = View.GONE
 
             logout.setOnClickListener {
                 Firebase.auth.signOut()
@@ -77,6 +79,7 @@ class MainActivity : AppCompatActivity() {
             gotoRead.visibility = View.GONE
             logout.visibility = View.GONE
             gotoDelete.visibility = View.GONE
+            checkbox.visibility = View.VISIBLE
 
             join.setOnClickListener {
                 auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())

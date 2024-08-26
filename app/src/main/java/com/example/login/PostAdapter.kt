@@ -18,7 +18,6 @@ class PostAdapter(private val posts: List<Post>) : RecyclerView.Adapter<PostAdap
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val post = posts[position]
-        holder.idView.text = post.id
         holder.titleTextView.text = post.title
         holder.contentTextView.text = post.content
         holder.checkBox.isChecked = selectedPosts.contains(post.id)
@@ -41,7 +40,6 @@ class PostAdapter(private val posts: List<Post>) : RecyclerView.Adapter<PostAdap
     }
 
     class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val idView: TextView = itemView.findViewById(R.id.idView)
         val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
         val contentTextView: TextView = itemView.findViewById(R.id.contentTextView)
         val checkBox: CheckBox = itemView.findViewById(R.id.checkBox)
