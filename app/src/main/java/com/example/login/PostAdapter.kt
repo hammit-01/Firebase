@@ -7,7 +7,7 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class PostAdapter(private val posts: List<Post>) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+class PostAdapter(private val posts: List<User>) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     private val selectedPosts = mutableListOf<String>()
 

@@ -20,7 +20,7 @@ class ReadActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var postAdapter: PostAdapter
-    private val posts = mutableListOf<Post>()
+    private val posts = mutableListOf<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,23 +76,23 @@ class ReadActivity : AppCompatActivity() {
                             val id = document.id
                             val title = document.getString("title") ?: "No Title"
                             val content = document.getString("content") ?: "No Content"
-                            posts.add(Post(id, title, content))
+                            posts.add(User(id, title, content))
                         }
                         postAdapter.notifyDataSetChanged()
                     } else {
                         // 데이터가 없는 경우 처리
-                        posts.add(Post("No posts found", "", ""))
+                        posts.add(User("No posts found", "", ""))
                         postAdapter.notifyDataSetChanged()
                     }
                 }
                 .addOnFailureListener { e ->
                     // 데이터 읽기 실패
-                    posts.add(Post("Error getting posts", "", ""))
+                    posts.add(User("Error getting posts", "", ""))
                     postAdapter.notifyDataSetChanged()
                 }
         } else {
             // 사용자 로그인 정보가 없는 경우 처리
-            posts.add(Post("User not logged in", "", ""))
+            posts.add(User("User not logged in", "", ""))
             postAdapter.notifyDataSetChanged()
         }
     }

@@ -21,7 +21,7 @@ class DeleteActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var postAdapter: PostAdapter
-    private val posts = mutableListOf<Post>()
+    private val posts = mutableListOf<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,7 +88,7 @@ class DeleteActivity : AppCompatActivity() {
                             val id = document.id
                             val title = document.getString("title") ?: "No Title"
                             val content = document.getString("content") ?: "No Content"
-                            posts.add(Post(id, title, content))
+                            posts.add(User(id, title, content))
                         }
                         postAdapter.notifyDataSetChanged()
                     } else {

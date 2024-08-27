@@ -11,8 +11,11 @@ import android.widget.Toast
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
+    // Firestore 인스턴스 초기화
+    private val db = FirebaseFirestore.getInstance()
     // FirebaseAuth 인스턴스 초기화
     private var auth = FirebaseAuth.getInstance()
 
@@ -85,6 +88,7 @@ class MainActivity : AppCompatActivity() {
                 auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
+                            //addNewPost(id, name, userName)
                             Toast.makeText(this, "회원가입 완료", Toast.LENGTH_LONG).show()
                             val intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
@@ -110,6 +114,35 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
             }
+        }
+    }
+
+    // 데이터 쓰기 함수
+    fun addNewPost(id: String, name: String, userName: String) {
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            val userId = currentUser.uid
+
+            // 사용자 도큐먼트의 서브컬렉션에 새 글 추가
+            val post = hashMapOf(
+                "id" to id,
+                "name" to name,
+                "userName" to userName
+            )
+
+            db.collection("userData").document(userId).collection("userdata")
+                .add(post)
+                .addOnSuccessListener { documentReference ->
+                    // 글 추가 성공
+                    Toast.makeText(this, "데이터 쓰기 성공", Toast.LENGTH_LONG).show()
+                }
+                .addOnFailureListener { e ->
+                    // 글 추가 실패
+                    println("Error adding document: $e")
+                }
+        } else {
+            // 사용자 로그인 정보가 없는 경우 처리
+            println("User not logged in")
         }
     }
 }
